@@ -1,0 +1,17 @@
+# Create service
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: templatename-appnamespace-srv
+  labels:
+    app: templatename
+    metrics: templatename-appnamespace
+spec:
+  selector:
+    app: templatename
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 3000
+    name: "http"

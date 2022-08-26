@@ -1,0 +1,28 @@
+# Deploy app
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: templatename
+spec:
+  selector:
+    matchLabels:
+      app: templatename
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: templatename
+        metrics: templatename-appnamespace
+    spec:
+      containers:
+      - name: templatename
+        image: docker_image
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "30m"
+        ports:
+        - containerPort: 3000
+          name: "http"
+          protocol: TCP
